@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Fight</title>
+	<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+	<audio ref="sword" src="medias/sounds/sword.wav"></audio>
+	<audio ref="bite" src="medias/sounds/bite.wav"></audio>
+	<audio ref="isdead" src="medias/sounds/isdead.mp3"></audio>
+	<audio ref="music" src="medias/sounds/music.mp3"></audio>
+	
+</head>
+<body>
+	<div class="Game">
+		<button class="button" id="start" onclick="startBattle()">You wanna fight ?</button>
+		<div id="battle" class="Battle">
+			<div class="Battle__commands">
+
+				<div class="Combo">
+					<div class="Combo__grid">
+			        <div class="square" id="1"></div>
+			        <div class="square" id="2"></div>
+			        <div class="square" id="3"></div>
+			        <div class="square" id="4"></div>
+			        <div class="square" id="5"></div>
+			        <div class="square" id="6"></div>
+			        <div class="square" id="7"></div>
+			        <div class="square" id="8"></div>
+			        <div class="square" id="9"></div>
+			      </div>
+			      <h2 id="timeLeft">Time: <span>5</span></h2>
+			      <h2 id="comboHits">hits: <span>0</span></h2>
+				</div>
+
+				<div class="commands">
+					<button id="attack" class="command" data-name="Slash that freak !">
+						<img src="medias/images/fight.png" alt="fight">
+					</button>
+					<button id="combo" class="command" data-name="Combo - click as many orange square as possible in 5 seconds ! - 3tp">
+						<img src="medias/images/combo.png" alt="defend">
+					</button>
+				</div>
+				<div class="commands__text"></div>
+			</div>
+			<div class="Battle__scene">
+				<div class="ennemies">
+					<div class="attackAnim"></div>
+				</div>
+				<div class="characters">
+					<div class="character">
+						<h2 id="charName"></h2>
+						<h2 id="charHp">Hp : <span></span></h2>
+						<h2 id="charTp">Tp : <span></span></h2>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="win">
+			<h2>Wow close call ! Anyway where d'ya found that sword ?</h2>
+			<h3>You win <span id="xp">0</span> xp !</h3>
+			<button class="button" onclick="document.location.reload()" id="retry">Retry ?</button>
+		</div>
+		<div id="lose">
+			<h2>Ah dang, ya dead.</h2>
+			<button class="button" onclick="document.location.reload()" id="retry">Retry ?</button>
+		</div>
+	</div>
+	
+</body>
+<script src="scripts/combo.js"></script>
+<script src="scripts/script.js"></script>
+</html>

@@ -1,0 +1,286 @@
+* {
+	box-sizing: border-box;
+}
+body {
+	color: white;
+	margin: 0;
+	padding: 0;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: 'Jua', sans-serif;
+}
+.shake {
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+h2 {
+	margin: 0;
+}
+.Game {
+	position: relative;
+	width: 800px;
+	height: 600px;
+	border: 1px solid black;
+	align-self: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+#win,
+#lose {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background-color: #769bd0;
+	display: none;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+#lose {
+	background-color: coral;
+}
+#lose .button {
+	margin-top: 15px;
+}
+#xp {
+	color: lightgreen;
+	font-size: 2em;
+}
+.button {
+	transition: .2s;
+	font-family: 'Jua', sans-serif;
+	font-size: 2em;
+	background-color: tomato;
+	color: white;
+	padding: 15px;
+	border: none;
+	border-radius: 15px;
+	cursor: pointer;
+	outline: 0;
+}
+.button:hover {
+	transform: scale(1.1);
+}
+.Battle {
+	display: none;
+	position: absolute;
+	height: 100%;
+	background-color: lightblue;
+}
+/*Commands*/
+.Battle__commands {
+	position: relative;
+	height: 100px;
+	background-color: black;
+	display: flex;
+}
+.commands {
+	width: 400px;
+	height: 100%;
+	padding: 5px;
+	margin: 0;
+	list-style: none;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+.command {
+	transition: .2s;
+	background-color: transparent;
+	height: 70px;
+	width: 70px;
+	padding: 0;
+	margin: 5px;
+	border-radius: 10px;
+	overflow: hidden;
+	border: none;
+	cursor: pointer;
+	opacity: .9
+}
+.command:hover {
+	transform: scale(1.2);
+}
+.command:disabled {
+	cursor: not-allowed;
+	opacity: .5;
+}
+.command:disabled:hover {
+	transform: none;
+}
+.command img {
+	width: 100%;
+	height: 100%;
+}
+.commands__text {
+	width: 400px;
+	height: 100%;
+	padding: 20px;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	font-size: 1.5em;
+}
+/*COMBO*/
+.Combo {
+	display: none;
+	position: absolute;
+	z-index: 10;
+	top: 10px;
+	left: 10px;
+}
+.Combo__grid {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	align-content: center;
+	width: 150px;
+	height: 150px;
+}
+.square {
+	width: 50px;
+	height: 50px;
+	border-style: solid;
+	border-color: black;
+	background-color: white;
+
+}
+.point {
+		cursor: pointer;
+	background-color: tomato;
+	background-size: cover;
+}
+#timeLeft span,
+#comboHits span {
+	margin-left: 70px;
+	font-size: 1.2em;
+}
+/*BATTLESCENE*/
+.Battle__scene {
+	display: flex;
+	flex-direction: column;
+}
+.ennemies {
+	background-image: url(medias/images/bg.gif);
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 300px;
+}
+.attackAnim {
+	position: absolute;
+	right: 200px;
+	bottom: 20px;
+	height: 200px;
+	width: 200px;
+}
+.attackAnim img {
+	width: 100%;
+	height: 100%;
+}
+#damages,
+#damagesChara {
+	position: absolute;
+	font-size: 2em;
+	animation: animDamages 2s forwards cubic-bezier(.22,.68,0,1.71);
+}
+@keyframes animDamages {
+	0% {
+		color: yellow;
+		opacity: 1;
+	}
+	30% {
+		color: white;
+		transform: translateY(-20px);
+		
+	}
+	50% {
+		transform: none;
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+#damagesChara {
+	bottom: 50px;
+	font-size: 3em;
+}
+#damageFX {
+	position: absolute;
+	width: 200px;
+	height: 200px;
+}
+.ennemy {
+	width: 200px;
+	height: 200px;
+	margin: 0 10px;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.ennemy img {
+	height: 100%;
+	width: 100%;
+}
+.isDead {
+	animation: isDead 4s forwards cubic-bezier(.22,.68,0,1.71);
+}
+@keyframes isDead {
+	100% {opacity: 0}
+}
+.characters {
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	height: 200px;
+	background-color: black;
+}
+.character {
+	height: 200px;
+	width: 170px;
+	padding: 15px;
+	border: 10px solid white;
+	background-color: #769bd0;
+	border-radius: 10px;
+	transform: translateY(-40px);
+	margin: 0 10px;
+}
+#charName {
+	font-size: 2em;
+	margin-bottom: 15px;
+}
+#charHp,
+#charTp {
+	max-width: 120px;
+	color: black;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+#charHp span,
+#charTp span {
+	font-size: 1.8em;
+	color: white;
+}
